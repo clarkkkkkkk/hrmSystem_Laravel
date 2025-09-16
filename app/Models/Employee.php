@@ -32,6 +32,11 @@ class Employee extends Model
         });
     }
 
+    public function scopeSearchByName($query, $name): mixed
+    {
+        return $query->whereHas('name', 'like', '%' . $name . '&');
+    }
+
     
     public function salaries(): HasMany
     {
@@ -46,5 +51,13 @@ class Employee extends Model
     public function contracts(): HasMany
     {
         return $this->hasMany(Contract::class);
+    }
+
+    public function getActiveContract($start_date = null, $end_date = null): Contract|null
+    {
+        $start_date = $start_date ?? now();
+        $end_date = $end_date ?? now();
+        return $this->contracts()->where('start_date', '<=', $start_date)
+        ->where('end_date', '>=', $end_date)->first();
     }
 }
