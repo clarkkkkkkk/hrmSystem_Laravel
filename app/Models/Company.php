@@ -30,4 +30,9 @@ class Company extends Model
     {
         return $this->throughDepartments()->hasDesignations();
     }
+
+    public function getLogoUrlAtrribute(): string|null
+    {
+        return $this->logo ? asset('storage/' . $this->logo) : asset('images/cklogocircle.png');
+    }
 }
