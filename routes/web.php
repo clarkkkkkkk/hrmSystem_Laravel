@@ -58,6 +58,14 @@ Route::middleware(['auth', 'verified'])->group(function(): void{
 });/* ->name( 'dashboard'); */
 
 
+
+
+
+
+
+
+
+
     
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
