@@ -51,7 +51,13 @@ Route::middleware(['auth', 'verified'])->group(function(): void{
         // Payrolls
         Route::prefix('payrolls')->name('payrolls.')->group(function (): void {
             Route::get('/', Admin\Payrolls\Index::class)->name('index');
-            Route::get('/create', Admin\Payrolls\Show::class)->name('create');
+            Route::get('/{id}/show', Admin\Payrolls\Show::class)->name('show');
+        });
+
+        // Payments
+        Route::prefix('payments')->name('payments.')->group(function (): void {
+            Route::get('/', Admin\Payments\Index::class)->name('index');
+            Route::get('/{id}/show', Admin\Payments\Show::class)->name('show');
         });
     });
 
