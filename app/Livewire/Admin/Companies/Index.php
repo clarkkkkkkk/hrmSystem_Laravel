@@ -28,7 +28,7 @@ class Index extends Component
     public function render(): View
     {
         return view('livewire.admin.comapnies.index', [
-            'companies' => Company::latest()->paginate(30),
+            'companies' => Company::latest()->paginate(10),
         ]);
     }
 }

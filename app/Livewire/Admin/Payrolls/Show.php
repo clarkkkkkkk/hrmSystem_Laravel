@@ -22,7 +22,6 @@ class Show extends Component
         $filepath = storage_path(Str::slug($salary->employee->name) . '-payslip.pdf');
         $pdf->save($filepath);
         return response()->download($filepath)->deleteFileAfterSend(true);
-
     }
     public function render()
     {
