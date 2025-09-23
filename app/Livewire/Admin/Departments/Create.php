@@ -25,6 +25,7 @@ class Create extends Component
     public function save(): mixed
     {
         $this->validate();
+        $this->department->company_id = session('company_id');
         $this->department->save();
         session()->flash('success', 'Department created successfully.');
         return $this->redirectIntended('departments.index');
