@@ -54,25 +54,15 @@ Route::middleware(['auth', 'verified'])->group(function(): void{
             Route::get('/{id}/show', Admin\Payrolls\Show::class)->name('show');
         });
 
-        // Payments
+        // Paymentsz
         Route::prefix('payments')->name('payments.')->group(function (): void {
             Route::get('/', Admin\Payments\Index::class)->name('index');
             Route::get('/{id}/show', Admin\Payments\Show::class)->name('show');
         });
     });
-
 });/* ->name( 'dashboard'); */
 
 
-
-
-
-
-
-
-
-
-    
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
