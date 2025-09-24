@@ -4,7 +4,7 @@
             Dashboard Heading
         </flux:heading>
         <flux:subheading size="lg" class="mb-6">
-            List of Companies
+            Welcome {{ auth()->user()->name }}
         </flux:subheading>
         <flux:separator />
     </div>

@@ -3,6 +3,7 @@
 use App\Livewire\Admin;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\PayrollController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,6 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function(): void{
         Route::prefix('payrolls')->name('payrolls.')->group(function (): void {
             Route::get('/', Admin\Payrolls\Index::class)->name('index');
             Route::get('/{id}/show', Admin\Payrolls\Show::class)->name('show');
+            Route::resource('payrolls', PayrollController::class);
         });
 
         // Paymentsz
