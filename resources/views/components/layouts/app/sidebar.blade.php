@@ -41,9 +41,19 @@
             </flux:navlist.group>
             <flux:navlist.group :heading="__('Payroll')" class="grid">
             </flux:navlist.group> --}}
+
+            <p class="text-red-500">{{ session('message') }}</p>
         </flux:navlist>
 
         <flux:spacer />
+
+        <flux:dropdown>
+            <flux:profile :name="App\Models\Company::find(session('company_id'))->name??'Select Company'"
+                :initials="App\Models\Company::find(session('company_id'))->initials??'N/A'" icon-tailing>
+            </flux:profile>
+        </flux:dropdown>
+
+
 
         {{-- Companies --}}
         <flux:navlist.group :heading="__('Companies')" class="grid">

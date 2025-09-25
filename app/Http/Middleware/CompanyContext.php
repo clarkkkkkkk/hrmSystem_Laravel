@@ -4,17 +4,16 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class CompanyContext
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
+        // Example: set company_id in the session or context
+        if (auth()->check() && auth()->user()->company_id) {
+            app()->instance('company', auth()->user()->company);
+        }
+
         return $next($request);
     }
 }
