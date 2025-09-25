@@ -22,12 +22,12 @@ class Index extends Component
             Storage::disk('public')->delete($company -> logo);
         }
         $company->delete();
-        session()->flash('message', 'Comapny deleted successfully.');
+        session()->flash('message', 'Companies deleted successfully.');
     }
 
     public function render(): View
     {
-        return view('livewire.admin.comapnies.index', [
+        return view('livewire.admin.companies.index', [
             'companies' => Company::latest()->paginate(10),
         ]);
     }
