@@ -47,20 +47,6 @@
 
         <flux:spacer />
 
-        <flux:dropdown>
-            <flux:profile :name="App\Models\Company::find(session('company_id'))->name??'Select Company'"
-                :initials="App\Models\Company::find(session('company_id'))->initials??'N/A'"
-                icon-tailing="chevrons-up-down" />
-            <flux:menu>
-                @foreach (auth()->user()->companies as $company)
-                    <flux:menu.radio.group>
-                        @livewire('company-switch', ['company' => $company], key($company->id))
-                    </flux:menu.radio.group>
-                @endforeach
-            </flux:menu>
-        </flux:dropdown>
-
-
 
         {{-- Companies --}}
         <flux:navlist.group :heading="__('Companies')" class="grid">
@@ -136,6 +122,19 @@
                 {{ __('Payroll Payments') }}
             </flux:navlist.item>
         </flux:navlist.group>
+
+        <flux:dropdown>
+            <flux:profile :name="App\Models\Company::find(session('company_id'))->name??'Select Company'"
+                :initials="App\Models\Company::find(session('company_id'))->initials??'N/A'"
+                icon-tailing="chevrons-up-down" />
+            <flux:menu>
+                @foreach (auth()->user()->companies as $company)
+                    <flux:menu.radio.group>
+                        @livewire('company-switch', ['company' => $company], key($company->id))
+                    </flux:menu.radio.group>
+                @endforeach
+            </flux:menu>
+        </flux:dropdown>
 
         <flux:navlist variant="outline">
             <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit"

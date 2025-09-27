@@ -19,10 +19,11 @@ class Create extends Component
         ];
     }
 
-    public function mount(): void
+    public function mount()
     {
         $this->designation = new Designation();
     }
+
 
     public function save(): mixed
     {

@@ -23,7 +23,7 @@ class Index extends Component
         ];
     }
 
-    public function generatePayroll(): void
+    public function generatePayroll()
     {
         $this->validate();
         $date = Carbon::parse($this->monthYear);
@@ -47,6 +47,7 @@ class Index extends Component
             session()->flash('success', 'Payroll generated succesfully.');
         }
     }
+    
 
     public function updatePayroll($id){
         $payroll = Payroll::inCompany()->find($id);

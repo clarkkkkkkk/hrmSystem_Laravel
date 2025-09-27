@@ -23,11 +23,11 @@ class Edit extends Component
         ];
     }
 
-    public function mount($id): void
-    {
+    public function mount($id)    {
         $this->employee = Employee::find($id);
         $this->department_id = $this->employee->designation->department_id;
     }
+
 
     public function save(): mixed
     {

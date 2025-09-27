@@ -20,10 +20,11 @@ class Create extends Component
         ];
 
     } 
-    public function mount(): void
+    public function mount()
     {
         $this->company = new Company();
     }
+
 
     public function save(): mixed
     {

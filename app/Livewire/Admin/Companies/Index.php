@@ -15,7 +15,7 @@ class Index extends Component
 {
     use WithPagination, LivewireWithoutUrlPagination;
     
-    public function delete($id): void
+    public function delete($id)
     {
         $company = Company::find($id);
         if($company->logo){
@@ -24,6 +24,7 @@ class Index extends Component
         $company->delete();
         session()->flash('message', 'Companies deleted successfully.');
     }
+
 
     public function render(): View
     {

@@ -17,10 +17,11 @@ class Edit extends Component
         ];
     }
 
-    public function mount($id): void
+    public function mount($id)
     {
         $this->department = Department::find($id);
     }
+
 
     public function save(): mixed
     {

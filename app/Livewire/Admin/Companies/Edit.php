@@ -22,10 +22,11 @@ class Edit extends Component
         ];
 
     } 
-    public function mount($id): void
+    public function mount($id)
     {
         $this->company = Company::find($id);
     } 
+
 
     public function save(): mixed
     {

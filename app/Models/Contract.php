@@ -20,7 +20,8 @@ class Contract extends Model
 
     public function scopeInCompany($query): mixed
     {
-        return $query->whereHas('designation', function ($q): void {
+        return $query->whereHas('designation', function ($q)
+        {
             $q->inCompany();
         });
     }
@@ -32,10 +33,11 @@ class Contract extends Model
 
     public function scopeSearchByEmployee($query, $name): mixed
     {
-        return $query->where('employee', function ($q) use ($name): void {
-                $q->where('name', 'like', '%$name%');
-            });
-    }
+        return $query->where('employee', function ($q) use ($name)
+        {
+            $q->where('name', 'like', '%$name%');
+        });
+}
 
     public function getTotalEarnings($monthYear): mixed
     {

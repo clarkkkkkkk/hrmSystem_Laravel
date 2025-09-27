@@ -11,11 +11,12 @@ class Index extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
-    public function delete($id): void
+    public function delete($id)
     {
         Designation::find($id)->delete();
         session()->flash('success', 'Designation deleted successfully.');
     }
+
     
     public function render()
     {

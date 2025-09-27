@@ -11,11 +11,12 @@ class Index extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
-    public function delete($id): void
+    public function delete($id)
     {
         Employee::find($id)->delete();
         session()->flash('success', 'Employee deleted successfully.');
     }
+
     public function render()
     {
         return view('livewire.admin.employees.index', [
