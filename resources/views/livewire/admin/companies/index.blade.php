@@ -32,11 +32,24 @@
                         </thead>
                         <tbody>
                             @foreach ($companies as $company)
-                                <tr class="text-center bg-nos-100 hover:bg-nos-200">
+                                <tr class="text-center bg-nos-100 hover:bg-nos-200 dark:bg-nos-900 dark:hover:bg-nos-700">
                                     <td>{{ $company->id }}</td>
-                                    <td class="text-zinc-900 dark:text-white flex justify-center"></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td class="text-zinc-900 dark:text-white flex justify-left">
+                                        <img src="{{ $company->logo_url }}" alt="" class="w-10 h-10 rounded-full mr-4">
+                                        <span>{{ $company->name }}</span>
+                                    </td>
+                                    <td>
+                                        {{ $company->departments->flatMap->designations->flatMap->employees->count() }}
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <flux:button variant="filled" icon="pencil"
+                                                :href="route('companies.edit', $company)" />
+                                            <flux:button variant="danger" icon="trash"
+                                                :href="route('companies.edit', $company)"
+                                                wire:click="delete({{ $company->id }})" />
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
