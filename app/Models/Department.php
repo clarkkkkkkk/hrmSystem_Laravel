@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Department extends Model
 {
@@ -17,18 +18,20 @@ class Department extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
     public function designations(): HasMany
     {
         return $this->hasMany(Designation::class);
     }
 
-    public function employees(): mixed
+    public function employees(): HasManyThrough
     {
-        return $this->throughDesignationations()->hasEmployees();
+        return $this->hasManyThrough(Employee::class, Designation::class);
     }
+
     public function scopeInCompany($query): mixed
     {
-        return $query->whereHas('department', function($q) {
+        return $query->whereHas('company', function ($q) {
             $q->inCompany();
         });
     }
