@@ -19,7 +19,7 @@ class HasCompanytext
         if(session()->has('company_id')){
             return $next($request);
         }
-        session()->flash('error', 'Please select a company first');
+        session()->flash('errorMsg', 'Please select a company first');
         return redirect(URL::previous());
     }
 }

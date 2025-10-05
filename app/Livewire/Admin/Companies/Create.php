@@ -37,7 +37,7 @@ class Create extends Component
         $this->company->save();
         
         session()->flash('success', 'Company created successfully.');
-        return $this->redirectIntended(route('companies.index'), navigate: true);
+        return $this->redirectIntended(route('companies.index'), true);
     }
     
     public function render()

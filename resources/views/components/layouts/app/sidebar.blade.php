@@ -135,6 +135,9 @@
                 @endforeach
             </flux:menu>
         </flux:dropdown>
+        @if (session()->has('errorMsg'))
+            <x-auth-session-status class="text-center text-red-500" :status="session('errorMsg')" />
+        @endif
 
         <flux:navlist variant="outline">
             <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit"
