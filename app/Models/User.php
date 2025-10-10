@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's initials
+     * Get the users initials
      */
     public function initials(): string
     {
